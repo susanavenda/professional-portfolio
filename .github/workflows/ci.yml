@@ -18,7 +18,7 @@ jobs:
     if: hashFiles('infrastructure-template.yml') != ''
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Auto-provision infrastructure
         uses: susanavenda/devops-toolkit/.github/workflows/auto-provision-infrastructure.yml@main
@@ -40,7 +40,7 @@ jobs:
       coverage-path: ${{ steps.detect.outputs.coverage-path }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Detect project configuration
         id: detect

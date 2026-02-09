@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Run security scan
         uses: ${{ env.DEVOPS_TOOLKIT_REPO }}/.github/workflows/security-scan.yml@${{ env.DEVOPS_TOOLKIT_BRANCH }}
@@ -40,7 +40,7 @@ jobs:
     needs: security-checks
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Verify public/ has required assets
         run: |
