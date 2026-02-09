@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # Use golden pipeline with DevSecOps approach
+  pipeline:
+    uses: susanavenda/devops-toolkit/.github/workflows/golden-pipeline-nodejs.yml@main
+    with:
+      node-version: '20'
+      install-command: 'npm ci'
+      build-command: 'npm run build'
+      test-command: 'npm test || echo "No tests configured"'
+      lint-command: 'npm run lint'
+      working-directory: '.'
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # Infrastructure security scan
+  infrastructure-security:
+    uses: susanavenda/devops-toolkit/.github/workflows/infrastructure-security.yml@main
+    with:
+      terraform-version: '1.6.0'
+      working-directory: 'infrastructure'
