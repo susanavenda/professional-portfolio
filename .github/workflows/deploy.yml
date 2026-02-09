@@ -18,11 +18,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: 'npm'
 
       - name: Verify public/ has required assets
         run: |
@@ -34,7 +37,7 @@ jobs:
 
       - name: Install and build
         run: |
-          npm install
+          npm ci
           npm run build
 
       - name: Verify build
@@ -44,11 +47,18 @@ jobs:
           ls -la dist/
 
       - name: Deploy to main (docs/)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           rm -rf docs
           cp -r dist docs
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
           git add docs
-          git diff --staged --quiet || git commit -m "Deploy: update docs from main"
-          git push
+          if git diff --staged --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "Deploy: update docs from main"
+            git push origin main
+          fi
