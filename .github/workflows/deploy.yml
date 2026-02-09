@@ -1,5 +1,6 @@
 # Build the app and commit the built site to main in docs/
 # Repo Settings → Pages → Source = "Deploy from a branch" → Branch: main, Folder: /docs
+# Uses reusable workflow from devops-toolkit
 name: Deploy to GitHub Pages
 
 on:
@@ -13,19 +14,11 @@ permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  verify-assets:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: 'npm'
 
       - name: Verify public/ has required assets
         run: |
@@ -35,30 +28,14 @@ jobs:
           test -f public/profile.jpg || (echo "Missing public/profile.jpg" && exit 1)
           ls -la public/
 
-      - name: Install and build
-        run: |
-          npm ci
-          npm run build
-
-      - name: Verify build
-        run: |
-          test -f dist/index.html || (echo "Missing dist/index.html" && exit 1)
-          test -f dist/labels.json || (echo "Missing dist/labels.json (public assets)" && exit 1)
-          ls -la dist/
-
-      - name: Deploy to main (docs/)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          rm -rf docs
-          cp -r dist docs
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
-          git add docs
-          if git diff --staged --quiet; then
-            echo "No changes to deploy"
-          else
-            git commit -m "Deploy: update docs from main"
-            git push origin main
-          fi
+  build-and-deploy:
+    needs: verify-assets
+    uses: susanavenda/devops-toolkit/.github/workflows/github-pages-deploy.yml@main
+    with:
+      build-command: 'npm run build'
+      install-command: 'npm ci'
+      source-dir: 'dist'
+      target-dir: 'docs'
+      node-version: '20'
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
