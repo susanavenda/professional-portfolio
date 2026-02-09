@@ -8,24 +8,31 @@ lerna-debug.log*
 
 # Build outputs
 dist/
-dist-ssr/
-*.local
+build/
+.next/
+out/
+.nuxt/
+.cache/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea/
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Environment
+# Environment variables
 .env
 .env.local
-.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
 
 # Logs
 logs/
@@ -34,3 +41,19 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Package manager lock files (keep package-lock.json for npm)
+# package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# GitHub Pages deployment (docs/ contains built files)
+# Keep docs/ directory but ignore its contents except index.html
+docs/*
+!docs/index.html
+!docs/assets/
