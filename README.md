@@ -87,6 +87,7 @@ professional-portfolio/
 │   ├── techskills.json      # Technical skills inventory
 │   └── recommendations.json # Professional recommendations
 ├── docs/                    # Built files for GitHub Pages deployment
+├── infrastructure/          # Infrastructure as Code (Terraform)
 └── package.json             # Project dependencies and scripts
 ```
 
@@ -105,17 +106,12 @@ Simply edit these JSON files and rebuild the application to update the content.
 
 ## 🚢 Deployment
 
-The project uses GitHub Actions for automated deployment:
+The project uses GitHub Actions for automated deployment to GitHub Pages. The workflow automatically builds and deploys on every push to `main`.
 
-1. Push changes to the `main` branch
-2. The workflow automatically builds the application
-3. Built files are committed to the `docs/` folder
-4. GitHub Pages serves the site from the `docs/` directory
-
-**GitHub Pages Configuration:**
-- Source: Deploy from a branch
-- Branch: `main`
+**Configuration:**
+- Source: Deploy from a branch (`main`)
 - Folder: `/docs`
+- Uses reusable workflow from [devops-toolkit](https://github.com/susanavenda/devops-toolkit)
 
 ## 📄 License
 
