@@ -33,7 +33,7 @@
     {
       "label": "Cloud & containers",
       "repoNames": [
-        "susanavenda/DO288-apps"
+        "susanavenda/containerized-apps"
       ],
       "topics": [
         "kubernetes",
@@ -49,7 +49,7 @@
     {
       "label": "Observability & monitoring",
       "repoNames": [
-        "susanavenda/observability-swift"
+        "susanavenda/observability-platform"
       ],
       "topics": [
         "observability",
@@ -65,8 +65,8 @@
     {
       "label": "Integration & full stack",
       "repoNames": [
-        "susanavenda/resume",
-        "susanavenda/angular"
+        "susanavenda/professional-portfolio",
+        "susanavenda/angular-hybrid-app"
       ],
       "topics": [
         "java",

@@ -1,5 +1,5 @@
 const MOBILE_BULLETS_VISIBLE = 4
-const CV_URL = 'https://github.com/susanavenda/resume/blob/main/Susana_Venda_-_Solution_Architect_and_DevOps_Team_Lead%20(1).pdf'
+const CV_URL = 'https://github.com/susanavenda/professional-portfolio/blob/main/Susana_Venda_-_Solution_Architect_and_DevOps_Team_Lead%20(1).pdf'
 
 import { useState } from 'react'
 
