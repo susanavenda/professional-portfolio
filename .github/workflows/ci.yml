@@ -11,7 +11,22 @@ env:
   DEVOPS_TOOLKIT_BRANCH: ${{ vars.DEVOPS_TOOLKIT_BRANCH || 'main' }}
 
 jobs:
+  # Auto-provision infrastructure if template exists
+  provision-infrastructure:
+    name: Provision Infrastructure (IaS)
+    runs-on: ubuntu-latest
+    if: hashFiles('infrastructure-template.yml') != ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Auto-provision infrastructure
+        uses: susanavenda/devops-toolkit/.github/workflows/auto-provision-infrastructure.yml@main
+
+  # Continue with normal CI pipeline
   detect-config:
+    needs: [provision-infrastructure]
+    if: always()
     name: Detect Project Configuration
     runs-on: ubuntu-latest
     outputs:

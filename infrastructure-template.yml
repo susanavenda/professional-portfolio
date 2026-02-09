@@ -1,0 +1,30 @@
+# Infrastructure Template - Just fill this and infrastructure is automatically provisioned!
+
+project:
+  name: professional-portfolio
+  environment: production
+
+application:
+  type: static-site  # Static site (React/Vite)
+  runtime: nodejs
+  port: 80
+
+scaling:
+  min-instances: 1
+  max-instances: 1  # Static sites don't need scaling
+
+networking:
+  domain: susanavenda.github.io  # GitHub Pages domain
+  ssl-enabled: true
+  cdn-enabled: true  # Enable CDN for better performance
+
+monitoring:
+  enabled: true
+  log-retention-days: 30
+
+security:
+  secrets-management: false  # Not needed for static site
+  encryption-at-rest: true
+  encryption-in-transit: true
+
+# That's it! Infrastructure will be automatically provisioned when you push this file.
