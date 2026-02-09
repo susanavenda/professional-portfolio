@@ -9,6 +9,12 @@ export default {
     '**/__tests__/**/*.[jt]s?(x)',
     '**/?(*.)+(spec|test).[jt]s?(x)'
   ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/e2e/',
+    '/dist/',
+    '/.playwright/'
+  ],
   collectCoverageFrom: [
     'src/**/*.{js,jsx}',
     '!src/**/*.stories.{js,jsx}',
