@@ -47,8 +47,8 @@ Thumbs.db
 *.temp
 .cache/
 
-# Package manager lock files (keep package-lock.json for npm)
-# package-lock.json
+# Package manager lock files
+# Keep package-lock.json for npm (commit it)
 yarn.lock
 pnpm-lock.yaml
 
