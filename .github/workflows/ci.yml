@@ -56,7 +56,7 @@ jobs:
             RUNTIME_VERSION=$(cat .nvmrc 2>/dev/null || node -e "console.log(require('./package.json').engines?.node?.replace(/[^0-9]/g, '') || '20')" 2>/dev/null || echo "20")
             INSTALL_CMD="npm ci"
             BUILD_CMD=$(node -e "try { console.log(require('./package.json').scripts.build || 'npm run build') } catch(e) { console.log('npm run build') }" 2>/dev/null || echo "npm run build")
-            TEST_CMD=$(node -e "try { const pkg = require('./package.json'); console.log(pkg.scripts.test || 'npm test') } catch(e) { console.log('npm test') }" 2>/dev/null || echo "npm test")
+            TEST_CMD=$(node -e "try { const pkg = require('./package.json'); console.log(pkg.scripts['test:ci'] || pkg.scripts.test || 'npm test') } catch(e) { console.log('npm run test:ci') }" 2>/dev/null || echo "npm run test:ci")
             LINT_CMD=$(node -e "try { console.log(require('./package.json').scripts.lint || 'npm run lint') } catch(e) { console.log('npm run lint') }" 2>/dev/null || echo "npm run lint")
             ARTIFACTS="dist"
             COVERAGE="coverage/lcov.info"
