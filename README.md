@@ -1,61 +1,132 @@
-# Professional Portfolio – Susana Venda
+# Professional Portfolio
 
-A one-page resume and portfolio built with **React** and **Vite**, hosted on **GitHub Pages**. Content is driven by JSON in `public/`.
+> A modern, responsive portfolio website showcasing professional experience, skills, and achievements. Built with React and Vite, featuring a clean design optimized for both desktop and mobile viewing.
 
-**Live:** [GitHub Pages](https://susanavenda.github.io/professional-portfolio/)
+## 🌐 Live Demo
 
-## Run locally
+**Website:** [https://susanavenda.github.io/professional-portfolio/](https://susanavenda.github.io/professional-portfolio/)
 
+## 📋 Overview
+
+This portfolio website presents a comprehensive view of professional background, including work experience, education, technical skills, certifications, and recommendations. The application features a single-page design with smooth navigation and responsive layouts that adapt seamlessly to different screen sizes.
+
+### Key Features
+
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Single-Page Application**: Smooth scrolling navigation with all content accessible from one page
+- **JSON-Driven Content**: Easy content management through structured JSON files
+- **Modern UI/UX**: Clean, professional design with Bootstrap styling
+- **Fast Performance**: Built with Vite for optimal build times and runtime performance
+- **GitHub Pages Integration**: Automated deployment workflow
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: React 18
+- **Build Tool**: Vite 6
+- **Styling**: Bootstrap 5, Custom CSS
+- **Icons**: Font Awesome
+- **Fonts**: Google Fonts
+- **Deployment**: GitHub Pages with automated CI/CD
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/susanavenda/professional-portfolio.git
+cd professional-portfolio
+```
+
+2. Install dependencies:
 ```bash
 npm install
+```
+
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-Then open **http://localhost:5173/professional-portfolio/** (Vite uses base path `/professional-portfolio/` for GitHub Pages).
+4. Open your browser and navigate to `http://localhost:5173/professional-portfolio/`
 
-## Build
+### Building for Production
 
 ```bash
 npm run build
 ```
 
-Output is in `dist/`. Preview with `npm run preview` (open the URL it prints, e.g. http://localhost:4173/professional-portfolio/).
+The built files will be in the `dist/` directory. Preview the production build:
 
-## Project structure
+```bash
+npm run preview
+```
 
-| Path | Purpose |
-|------|---------|
-| `src/App.jsx` | Main app; loads data and renders sections |
-| `src/main.jsx` | React entry |
-| `src/index.css` | Global styles (professional theme) |
-| `src/components/` | Header, Hero, Experience, Education, Skills, Recommendations, Interests, Certifications, Footer |
-| `src/hooks/useResumeData.js` | Fetches all JSON from `public/` |
-| `public/` | Static assets: `profile.jpg`, `favicon.ico`, `labels.json`, `jobs.json`, `education.json`, `techskills.json`, `certifications.json`, `recommendations.json` |
+## 📁 Project Structure
 
-## Updating content
+```
+professional-portfolio/
+├── src/
+│   ├── components/          # React components (Header, Hero, Experience, etc.)
+│   ├── hooks/               # Custom React hooks for data fetching
+│   ├── App.jsx              # Main application component
+│   ├── main.jsx             # Application entry point
+│   └── index.css            # Global styles
+├── public/                  # Static assets and JSON data files
+│   ├── profile.jpg          # Profile image
+│   ├── favicon.ico          # Site favicon
+│   ├── labels.json          # Personal information and navigation
+│   ├── jobs.json            # Work experience data
+│   ├── education.json       # Educational background
+│   ├── certifications.json  # Professional certifications
+│   ├── techskills.json      # Technical skills inventory
+│   └── recommendations.json # Professional recommendations
+├── docs/                    # Built files for GitHub Pages deployment
+└── package.json             # Project dependencies and scripts
+```
 
-Edit the JSON files in **`public/`** and rebuild (or push to `main`; the workflow will build and deploy).
+## 📝 Content Management
 
-- **Name, tagline, bio, nav:** `public/labels.json`
-- **Experience:** `public/jobs.json`
-- **Education:** `public/education.json`
-- **Certifications:** `public/certifications.json`
-- **Tech skills:** `public/techskills.json`
-- **Recommendations:** `public/recommendations.json`
+All content is managed through JSON files in the `public/` directory:
 
-**Single source of truth:** All content lives in `public/`. The root-level copies (e.g. `labels.json`, `jobs.json`) are legacy; the deploy uses only `public/`. You can remove the root data files to avoid confusion.
+- **`labels.json`**: Name, tagline, bio, and navigation labels
+- **`jobs.json`**: Work experience entries with roles, companies, and responsibilities
+- **`education.json`**: Educational qualifications and institutions
+- **`certifications.json`**: Professional certifications and credentials
+- **`techskills.json`**: Technical skills categorized by domain
+- **`recommendations.json`**: Professional recommendations and testimonials
 
-## Deploy
+Simply edit these JSON files and rebuild the application to update the content.
 
-One workflow: build the app and commit the built files into `docs/` on **main**. Pages serves from that folder.
+## 🚢 Deployment
 
-1. **Settings → Pages → Build and deployment**: set **Source** to **Deploy from a branch**.
-2. Set **Branch** to `main`, **Folder** to **/docs**, and save.
-3. Push to `main`; the workflow builds `dist/`, copies it to `docs/`, and pushes that commit to main. The site updates from `main` → `/docs`.
+The project uses GitHub Actions for automated deployment:
 
-The site is at `https://<username>.github.io/professional-portfolio/`. The first run creates the `docs/` folder on main.
+1. Push changes to the `main` branch
+2. The workflow automatically builds the application
+3. Built files are committed to the `docs/` folder
+4. GitHub Pages serves the site from the `docs/` directory
 
+**GitHub Pages Configuration:**
+- Source: Deploy from a branch
+- Branch: `main`
+- Folder: `/docs`
 
-## Tech
+## 📄 License
 
-React 18, Vite 6, Bootstrap 5 (CSS), Font Awesome, Google Fonts. No jQuery; data is loaded with `fetch` in a custom hook.
+This project is private and proprietary.
+
+## 👤 Author
+
+**Susana Venda**
+- GitHub: [@susanavenda](https://github.com/susanavenda)
+- Portfolio: [https://susanavenda.github.io/professional-portfolio/](https://susanavenda.github.io/professional-portfolio/)
+
+---
+
+*Last updated: February 2026*
