@@ -1,0 +1,39 @@
+# Auto-generated project configuration
+# Generated: 2026-02-09 15:01:06 UTC
+
+project:
+  name: ${PROJECT_NAME}
+  repository: ${GITHUB_REPOSITORY}
+  default-branch: ${GITHUB_REF_NAME:-main}
+
+language:
+  type: nodejs
+  runtime-version: 20
+
+build:
+  install-command: npm ci
+  build-command: vite build
+  test-command: echo "No tests specified" && exit 0
+  lint-command: eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0
+  format-command: ${FORMAT_COMMAND:-}
+
+paths:
+  working-directory: .
+  build-artifacts: dist
+  coverage: coverage/lcov.info
+
+security:
+  enable-sast: true
+  enable-dependency-scan: true
+  enable-secrets-scan: true
+  enable-container-scan: true
+  enable-infrastructure-scan: true
+  fail-on-vulnerabilities: true
+
+infrastructure:
+  terraform-version: 1.6.0
+  infrastructure-path: infrastructure
+
+devops-toolkit:
+  repository: susanavenda/devops-toolkit
+  branch: main

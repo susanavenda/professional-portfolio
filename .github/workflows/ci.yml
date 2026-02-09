@@ -2,37 +2,109 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: ['${{ github.event.repository.default_branch }}', 'develop']
   pull_request:
-    branches: [main]
+    branches: ['${{ github.event.repository.default_branch }}']
+
+env:
+  DEVOPS_TOOLKIT_REPO: ${{ vars.DEVOPS_TOOLKIT_REPO || 'susanavenda/devops-toolkit' }}
+  DEVOPS_TOOLKIT_BRANCH: ${{ vars.DEVOPS_TOOLKIT_BRANCH || 'main' }}
 
 jobs:
-  # Golden Pipeline Interface - Standardized DevSecOps pipeline
+  detect-config:
+    name: Detect Project Configuration
+    runs-on: ubuntu-latest
+    outputs:
+      language: ${{ steps.detect.outputs.language }}
+      runtime-version: ${{ steps.detect.outputs.runtime-version }}
+      install-command: ${{ steps.detect.outputs.install-command }}
+      build-command: ${{ steps.detect.outputs.build-command }}
+      test-command: ${{ steps.detect.outputs.test-command }}
+      lint-command: ${{ steps.detect.outputs.lint-command }}
+      build-artifacts-path: ${{ steps.detect.outputs.build-artifacts-path }}
+      coverage-path: ${{ steps.detect.outputs.coverage-path }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Detect project configuration
+        id: detect
+        run: |
+          # Read from config file if exists, otherwise detect from project files
+          if [ -f "config/project-config.yml" ]; then
+            echo "📋 Reading from config/project-config.yml"
+            # Extract values from config (simplified - use yq in production)
+            LANGUAGE=$(grep -A1 "language:" config/project-config.yml | grep "type:" | awk '{print $2}' || echo "nodejs")
+            RUNTIME_VERSION=$(grep -A2 "language:" config/project-config.yml | grep "runtime-version:" | awk '{print $2}' || echo "20")
+          elif [ -f "package.json" ]; then
+            LANGUAGE="nodejs"
+            RUNTIME_VERSION=$(cat .nvmrc 2>/dev/null || node -e "console.log(require('./package.json').engines?.node?.replace(/[^0-9]/g, '') || '20')" 2>/dev/null || echo "20")
+            INSTALL_CMD="npm ci"
+            BUILD_CMD=$(node -e "try { console.log(require('./package.json').scripts.build || 'npm run build') } catch(e) { console.log('npm run build') }" 2>/dev/null || echo "npm run build")
+            TEST_CMD=$(node -e "try { const pkg = require('./package.json'); console.log(pkg.scripts.test || 'npm test') } catch(e) { console.log('npm test') }" 2>/dev/null || echo "npm test")
+            LINT_CMD=$(node -e "try { console.log(require('./package.json').scripts.lint || 'npm run lint') } catch(e) { console.log('npm run lint') }" 2>/dev/null || echo "npm run lint")
+            ARTIFACTS="dist"
+            COVERAGE="coverage/lcov.info"
+          else
+            LANGUAGE="nodejs"
+            RUNTIME_VERSION="20"
+            INSTALL_CMD="npm ci"
+            BUILD_CMD="npm run build"
+            TEST_CMD="npm test"
+            LINT_CMD="npm run lint"
+            ARTIFACTS="dist"
+            COVERAGE="coverage/lcov.info"
+          fi
+          
+          # Set defaults if not set from config
+          INSTALL_CMD="${INSTALL_CMD:-npm ci}"
+          BUILD_CMD="${BUILD_CMD:-npm run build}"
+          TEST_CMD="${TEST_CMD:-npm test || echo 'No tests configured'}"
+          LINT_CMD="${LINT_CMD:-npm run lint}"
+          ARTIFACTS="${ARTIFACTS:-dist}"
+          COVERAGE="${COVERAGE:-coverage/lcov.info}"
+          
+          echo "language=$LANGUAGE" >> $GITHUB_OUTPUT
+          echo "runtime-version=$RUNTIME_VERSION" >> $GITHUB_OUTPUT
+          echo "install-command=$INSTALL_CMD" >> $GITHUB_OUTPUT
+          echo "build-command=$BUILD_CMD" >> $GITHUB_OUTPUT
+          echo "test-command=$TEST_CMD" >> $GITHUB_OUTPUT
+          echo "lint-command=$LINT_CMD" >> $GITHUB_OUTPUT
+          echo "build-artifacts-path=$ARTIFACTS" >> $GITHUB_OUTPUT
+          echo "coverage-path=$COVERAGE" >> $GITHUB_OUTPUT
+          
+          echo "✅ Detected: $LANGUAGE ($RUNTIME_VERSION)"
+
+  # Golden Pipeline Interface - Dynamic configuration
   pipeline:
-    uses: susanavenda/devops-toolkit/.github/workflows/golden-pipeline.yml@main
+    name: Golden Pipeline
+    needs: detect-config
+    uses: ${{ env.DEVOPS_TOOLKIT_REPO }}/.github/workflows/golden-pipeline.yml@${{ env.DEVOPS_TOOLKIT_BRANCH }}
     with:
-      language: nodejs
-      runtime-version: '20'
-      install-command: 'npm ci'
-      build-command: 'npm run build'
-      test-command: 'npm test || echo "No tests configured"'
-      lint-command: 'npm run lint'
+      language: ${{ needs.detect-config.outputs.language }}
+      runtime-version: ${{ needs.detect-config.outputs.runtime-version }}
+      install-command: ${{ needs.detect-config.outputs.install-command }}
+      build-command: ${{ needs.detect-config.outputs.build-command }}
+      test-command: ${{ needs.detect-config.outputs.test-command }}
+      lint-command: ${{ needs.detect-config.outputs.lint-command }}
       working-directory: '.'
-      build-artifacts-path: 'dist'
-      coverage-path: 'coverage/lcov.info'
-      enable-sast: true
-      enable-dependency-scan: true
-      enable-secrets-scan: true
-      enable-container-scan: true
-      enable-infrastructure-scan: true
+      build-artifacts-path: ${{ needs.detect-config.outputs.build-artifacts-path }}
+      coverage-path: ${{ needs.detect-config.outputs.coverage-path }}
+      enable-sast: ${{ vars.ENABLE_SAST != 'false' }}
+      enable-dependency-scan: ${{ vars.ENABLE_DEPENDENCY_SCAN != 'false' }}
+      enable-secrets-scan: ${{ vars.ENABLE_SECRETS_SCAN != 'false' }}
+      enable-container-scan: ${{ vars.ENABLE_CONTAINER_SCAN != 'false' }}
+      enable-infrastructure-scan: ${{ vars.ENABLE_INFRASTRUCTURE_SCAN != 'false' }}
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   # Infrastructure security scan (if infrastructure exists)
   infrastructure-security:
+    name: Infrastructure Security
+    needs: detect-config
     if: hashFiles('infrastructure/**/*.tf') != ''
-    uses: susanavenda/devops-toolkit/.github/workflows/infrastructure-security.yml@main
+    uses: ${{ env.DEVOPS_TOOLKIT_REPO }}/.github/workflows/infrastructure-security.yml@${{ env.DEVOPS_TOOLKIT_BRANCH }}
     with:
-      terraform-version: '1.6.0'
-      working-directory: 'infrastructure'
+      terraform-version: ${{ vars.TERRAFORM_VERSION || '1.6.0' }}
+      working-directory: ${{ vars.INFRASTRUCTURE_PATH || 'infrastructure' }}
