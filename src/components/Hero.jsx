@@ -1,5 +1,12 @@
 function getBase() {
-  if (typeof window === 'undefined') return import.meta.env.BASE_URL || './'
+  if (typeof window === 'undefined') {
+    // Support both Vite (import.meta.env) and Jest (process.env or fallback)
+    try {
+      return import.meta.env.BASE_URL || './';
+    } catch (e) {
+      return process.env.BASE_URL || './';
+    }
+  }
   const p = window.location.pathname
   return p.endsWith('/') ? p : p + '/'
 }

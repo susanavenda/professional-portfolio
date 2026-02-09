@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react'
 
 function getBase() {
-  if (typeof window === 'undefined') return import.meta.env.BASE_URL || './'
+  if (typeof window === 'undefined') {
+    // Support both Vite (import.meta.env) and Jest (process.env or fallback)
+    try {
+      return import.meta.env.BASE_URL || './';
+    } catch (e) {
+      return process.env.BASE_URL || './';
+    }
+  }
   const origin = window.location.origin
   const path = window.location.pathname || '/'
   const pathBase = path.endsWith('/') ? path : path + '/'

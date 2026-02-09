@@ -1,6 +1,9 @@
 // Jest setup file for testing
 import '@testing-library/jest-dom';
 
+// Set BASE_URL for tests
+process.env.BASE_URL = '/';
+
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
