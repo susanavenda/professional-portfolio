@@ -19,21 +19,15 @@ permissions:
   security-events: read
 
 jobs:
-  # Security checks before deployment
+  # Security checks before deployment (reusable workflow called at job level)
   security-checks:
     name: Pre-deployment Security
-    runs-on: ubuntu-latest
+    uses: ${{ env.DEVOPS_TOOLKIT_REPO }}/.github/workflows/security-scan.yml@${{ env.DEVOPS_TOOLKIT_BRANCH }}
+    with:
+      scan-type: 'all'
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     continue-on-error: true
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Run security scan
-        uses: ${{ env.DEVOPS_TOOLKIT_REPO }}/.github/workflows/security-scan.yml@${{ env.DEVOPS_TOOLKIT_BRANCH }}
-        with:
-          scan-type: 'all'
-        secrets:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   verify-assets:
     name: Verify Assets

@@ -11,7 +11,7 @@ env:
   DEVOPS_TOOLKIT_BRANCH: ${{ vars.DEVOPS_TOOLKIT_BRANCH || 'main' }}
 
 jobs:
-  # Auto-provision infrastructure if template exists
+  # Placeholder when infrastructure template exists (actual provisioning runs in devops-toolkit on path changes)
   provision-infrastructure:
     name: Provision Infrastructure (IaS)
     runs-on: ubuntu-latest
@@ -19,9 +19,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Auto-provision infrastructure
-        uses: susanavenda/devops-toolkit/.github/workflows/auto-provision-infrastructure.yml@main
+      - name: Note
+        run: echo "Infrastructure provisioning is triggered by devops-toolkit when infrastructure-template.yml or .github/workflows change."
 
   # Continue with normal CI pipeline
   detect-config:
