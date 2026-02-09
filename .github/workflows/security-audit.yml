@@ -161,7 +161,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [npm-audit, maven-security, container-scan, infrastructure-scan, secrets-scan]
     if: always()
-    continue-on-error: true
     steps:
       - name: Generate security summary
         run: |
@@ -176,3 +175,4 @@ jobs:
           echo "- ✅ Secrets scanning" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "View detailed results in the Security tab."
+          echo "✅ Security audit workflow completed successfully"
