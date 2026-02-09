@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Data Science with Machine Learning & AI Career Accelerator",
+    "issuer": "University of Cambridge Professional and Continuing Education (in collaboration with FourthRev)",
+    "description": "Feb 2026 – In progress. Certificate of Completion from the University of Cambridge upon meeting all assessment and programme requirements. Combines enterprise architecture and DevOps leadership with formal training in data science, ML and AI.",
+    "category": "Data science & AI"
+  },
+  {
+    "name": "AWS Certified Solutions Architect - Associate (SAA-C03)",
+    "issuer": "learn.cantrill.io (Adrian Cantrill)",
+    "description": "In progress. Become a Solutions Architect and confidently pass the SAA-C03 exam.",
+    "category": "Solution & enterprise architecture"
+  },
+  {
+    "name": "Certified Scrum Product Owner",
+    "issuer": "Scrum Alliance",
+    "description": "Product ownership, backlog management and stakeholder alignment.",
+    "category": "Governance & delivery"
+  },
+  {
+    "name": "Certified Scrum Developer",
+    "issuer": "Scrum Alliance",
+    "description": "Agile development practices and team delivery.",
+    "category": "Governance & delivery"
+  },
+  {
+    "name": "OpenShift Training",
+    "issuer": "RedHat",
+    "description": "Container platform, Kubernetes and cloud-native workloads.",
+    "category": "Cloud & containers"
+  },
+  {
+    "name": "AWS Training",
+    "issuer": "AWS",
+    "description": "Cloud services, architecture and operations.",
+    "category": "Cloud & containers"
+  },
+  {
+    "name": "ICA Certificate, Sanction Screening",
+    "issuer": "International Compliance Association",
+    "description": "Compliance and financial crime prevention.",
+    "category": "Compliance & security"
+  }
+]

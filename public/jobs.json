@@ -1,0 +1,152 @@
+[
+  {
+    "jobTitle": "Senior IT Architect / Consultant",
+    "company": "AXA - Vivid, Brussels",
+    "duration": "Oct 2025 - Present",
+    "logo": "logos/axa.png",
+    "responsibilities": [
+      "Leading architecture for enterprise Puppet/Ansible/AAP migration; defining LLD structure, RFP, scope and delivery templates to de-risk execution.",
+      "Setting technical direction and governance so delivery teams can execute with clarity."
+    ]
+  },
+  {
+    "jobTitle": "Technical Lead / Team Lead / Product Owner",
+    "company": "Zetes, Brussels",
+    "duration": "Sept 2024 -  Sept 2025",
+    "logo": "logos/zetes.png",
+    "responsibilities": [
+      "Built and led DevOps team of 6; defined architecture, technical direction and delivery processes.",
+      "Shipped reusable GitLab CI/CD pipeline library, standardising build, test and deploy across all projects and reducing duplication.",
+      "Migrated legacy workloads to Kubernetes (Helm, Podman) and AWS; dual strategy (K8s + Ansible) for resilience.",
+      "Introduced ELK observability, reducing incident resolution time.",
+      "Aligned delivery with enterprise architects and security; embedded DevSecOps for NIS2/ISO27001.",
+      "Tech: GitLab CI/CD, Python, Docker, Kubernetes, Helm, Terraform, Ansible, AWS, ELK, Podman, Agile."
+    ]
+  },
+  {
+    "jobTitle": "Technical Lead Engineer – List Management Screening",
+    "company": "SWIFT, La Hulpe",
+    "duration": "Sept 2020 -  Sept 2022",
+    "logo": "logos/swift.png",
+    "responsibilities": [
+      "Owned List Management Screening platform for compliance filtering of financial data.",
+      "Automated releases across environments and containerised with Docker, removing environment drift.",
+      "Migrated legacy stack to Spring 5 / Spring Boot 2 for scalability and maintainability.",
+      "Tech: Java, Maven, Spring Boot, JUnit, JPA, REST, Oracle SQL, Docker, Git, Cloudbees."
+    ]
+  },
+  {
+    "jobTitle": "Technical Lead Engineer – Transaction Screening",
+    "company": "SWIFT, La Hulpe",
+    "duration": "Sept 2019 -  Sept 2020",
+    "logo": "logos/swift.png",
+    "responsibilities": [
+      "Developed and enhanced the Transaction Screening application used to filter transactions against sanction lists.",
+      "Implemented RESTful APIs and transaction filtering logic, ensuring compliance in high-volume environments.",
+      "Contributed to DevOps automation and integration with CI/CD pipelines.",
+      "Tech: Java 1.8, Maven, Spring Boot, Spring, JUnit, JPA, REST, Oracle SQL, Docker, Git, Jenkins, Jira, Confluence."
+    ]
+  },
+  {
+    "jobTitle": "Casper Project – Tech Lead Front-End",
+    "company": "NBB, Brussels",
+    "duration": "Jun 2018 -  Nov 2018",
+    "logo": "logos/nbb.png",
+    "responsibilities": [
+      "Defined project architecture according to NBB best practices.",
+      "Managed communication layer between front-end and back-end services.",
+      "Trained and supported new colleagues to accelerate onboarding.",
+      "Tech: AngularJS, NodeJS, Spring Boot, Logstash, HTML, CSS, NPM, Jasmine, Karma, REST, Jira, Confluence, SVN."
+    ]
+  },
+  {
+    "jobTitle": "Extract Project – Tech Lead Full Stack",
+    "company": "NBB, Brussels",
+    "duration": "Jun 2017 -  Jun 2018",
+    "logo": "logos/nbb.png",
+    "responsibilities": [
+      "Led development of the Extract web application for data migration and reporting.",
+      "Designed and implemented reporting features using Spring Batch.",
+      "Coordinated data migration strategies, ensuring accuracy and compliance with NBB standards.",
+      "Tech: Java 1.8, Maven, Spring, Spring Batch, REST, Oracle & SQL Server, Bamboo, JUnit, JPA, SVN, Jira, Confluence."
+    ]
+  },
+  {
+    "jobTitle": "SOA Improvement Project – Middleware Developer",
+    "company": "DeltaLloyd Life (DLL), Brussels",
+    "duration": "Dec 2016 -  Jun 2017",
+    "logo": "logos/dll.png",
+    "responsibilities": [
+      "Improved SOA platform by refactoring Oracle Service Bus implementations.",
+      "Automated testing pipelines and introduced CI/CD processes for middleware services.",
+      "Conducted proof-of-concept for ELK monitoring, improving observability.",
+      "Tech: Oracle Service Bus, Jenkins, SoapUI, SOA, WSDL, XSD, WebLogic, ELK."
+    ]
+  },
+  {
+    "jobTitle": "Payment Automatisation Project – Integration Developer",
+    "company": "Bank Degroof Petercam (BDP), Brussels",
+    "duration": "Dec 2015 -  Dec 2016",
+    "logo": "logos/bdp.png",
+    "responsibilities": [
+      "Performed business analysis for Target2-Securities (T2S) project.",
+      "Developed integration components using Talend and internal APIs.",
+      "Designed and implemented unit testing frameworks for Talend pipelines.",
+      "Deployed one of the first Talend-based solutions within the company, supported by ELK monitoring.",
+      "Tech: Talend, Java, Spring Batch, SQL Server, ELK, REST, JMS, XML."
+    ]
+  },
+  {
+    "jobTitle": "Product and Catalog Project – Front-end Developer",
+    "company": "Vodafone, Lisbon",
+    "duration": "Aug 2015 -  Dec 2015",
+    "logo": "logos/vodafone.png",
+    "responsibilities": [
+      "Developed front-end for SOA-based multi-tier web application.",
+      "Implemented user interfaces with ExtJS, integrating with Java-based back-end services.",
+      "Tech: ExtJS, Java, SOA, WSDL, Apache CXF, JAX-WS, REST, Oracle VM, Vagrant."
+    ]
+  },
+  {
+    "jobTitle": "Academic Supporter – Front-end Developer",
+    "company": "Vodafone, Lisbon",
+    "duration": "May 2015 -  Aug 2015",
+    "logo": "logos/vodafone.png",
+    "responsibilities": [
+      "Built prototype web applications to evaluate multi-cloud scenarios.",
+      "Assessed viability of cloud solutions for business applications.",
+      "Tech: AngularJS, Java, MongoDB, JPA, Maven, MySQL, Docker, Google Cloud, Bluemix."
+    ]
+  },
+  {
+    "jobTitle": "AT2 – Integration Developer",
+    "company": "SIBS, Lisbon",
+    "duration": "Nov 2014 -  May 2015",
+    "logo": "logos/sibs.png",
+    "responsibilities": [
+      "Performed functional and technical analyses for the project.",
+      "Integrated with TARGET2 and T2S.",
+      "Tech: IBM Integration Bus (Java), SOA, WSDL, WebSphere, Informix."
+    ]
+  },
+  {
+    "jobTitle": "ARTIC – Back-end Developer",
+    "company": "SIBS, Lisbon",
+    "duration": "Nov 2013 -  Nov 2014",
+    "logo": "logos/sibs.png",
+    "responsibilities": [
+      "Implemented the architecture of a new card processing platform covering most of the payment value chain.",
+      "Applied Agile/Scrum, peer programming and code review practices.",
+      "Delivered end-to-end transaction implementation in a high-security environment.",
+      "Tech: JEE, Maven, JUnit, JPA, DB2, JMS, SOA, XML, XSD, WSDL, TFS, Jira, Confluence, IntelliJ."
+    ]
+  },
+  {
+    "jobTitle": "Founder",
+    "company": "Self employed, Lisbon",
+    "duration": "Aug 2012 -  Nov 2013",
+    "responsibilities": [
+      "Founder of a retail business, responsible for the marketing strategy, financial, recruitment processes and event management."
+    ]
+  }
+]

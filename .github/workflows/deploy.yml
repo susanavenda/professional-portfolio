@@ -1,0 +1,54 @@
+# Build the app and commit the built site to main in docs/
+# Repo Settings → Pages → Source = "Deploy from a branch" → Branch: main, Folder: /docs
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Verify public/ has required assets
+        run: |
+          for f in public/labels.json public/jobs.json public/education.json public/techskills.json public/certifications.json public/recommendations.json; do
+            test -f "$f" || (echo "Missing $f (edit files in public/, not root)" && exit 1)
+          done
+          test -f public/profile.jpg || (echo "Missing public/profile.jpg" && exit 1)
+          ls -la public/
+
+      - name: Install and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Verify build
+        run: |
+          test -f dist/index.html || (echo "Missing dist/index.html" && exit 1)
+          test -f dist/labels.json || (echo "Missing dist/labels.json (public assets)" && exit 1)
+          ls -la dist/
+
+      - name: Deploy to main (docs/)
+        run: |
+          rm -rf docs
+          cp -r dist docs
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git diff --staged --quiet || git commit -m "Deploy: update docs from main"
+          git push

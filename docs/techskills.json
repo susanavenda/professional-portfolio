@@ -1,0 +1,10 @@
+{
+  "Data science & AI": "Building on 10+ years in architecture and DevOps, now formalising data science, ML and AI through the University of Cambridge Career Accelerator—to drive data-driven solutions and AI adoption in complex organisations.",
+  "Solution & enterprise architecture": "Designing high-level and low-level architecture for enterprise solutions and migrations: LLD structures, RFP and scope, delivery templates and technical direction so teams can execute with clarity.",
+  "DevOps & CI/CD": "Building and leading DevOps practices and teams: GitLab CI/CD pipelines, standardised build–test–deploy, and automation from code to production. Unblocking delivery with reusable patterns and concrete decisions.",
+  "Cloud & containers": "Migrating legacy workloads to cloud-native: Kubernetes, Helm, Docker, Podman, AWS, OpenShift. Dual strategies (e.g. K8s + Ansible) for resilience.",
+  "Observability & monitoring": "Introducing and running observability in production: ELK stack, OpenTelemetry, APM and tracing. Reducing incident resolution time and improving visibility across cloud and on-prem workloads.",
+  "Integration & full stack": "Back-end and integration: Java, Spring, Spring Boot, JPA, REST, SOA, Oracle Service Bus, Talend, data migration and reporting. Front-end experience with Angular.",
+  "Governance & delivery": "Business cases, KPIs and OKRs; RFP and scope, vendor negotiation, governance frameworks and delivery processes. Managing and aligning cross-department teams; working with enterprise architects on technical direction.",
+  "Compliance & security": "Embedding DevSecOps in the delivery lifecycle: NIS2, ISO27001, sanction screening and regulatory alignment. Compliance and financial-crime prevention in high-volume environments."
+}

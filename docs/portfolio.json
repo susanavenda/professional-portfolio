@@ -1,0 +1,120 @@
+{
+  "categories": [
+    {
+      "label": "Solution & enterprise architecture",
+      "repoNames": [],
+      "topics": [
+        "architecture",
+        "design",
+        "hld",
+        "lld",
+        "system-design",
+        "enterprise",
+        "migration"
+      ]
+    },
+    {
+      "label": "DevOps & CI/CD",
+        "repoNames": [
+          "susanavenda/devops-practice-platform"
+        ],
+      "topics": [
+        "devops",
+        "cicd",
+        "ci-cd",
+        "gitlab",
+        "github-actions",
+        "automation",
+        "pipeline",
+        "deployment",
+        "terraform"
+      ]
+    },
+    {
+      "label": "Cloud & containers",
+      "repoNames": [
+        "susanavenda/DO288-apps"
+      ],
+      "topics": [
+        "kubernetes",
+        "docker",
+        "aws",
+        "helm",
+        "openshift",
+        "cloud",
+        "containers",
+        "eks"
+      ]
+    },
+    {
+      "label": "Observability & monitoring",
+      "repoNames": [
+        "susanavenda/observability-swift"
+      ],
+      "topics": [
+        "observability",
+        "elastic",
+        "opentelemetry",
+        "apm",
+        "elk",
+        "tracing",
+        "monitoring",
+        "metrics"
+      ]
+    },
+    {
+      "label": "Integration & full stack",
+      "repoNames": [
+        "susanavenda/resume",
+        "susanavenda/angular"
+      ],
+      "topics": [
+        "java",
+        "spring",
+        "angular",
+        "react",
+        "rest",
+        "api",
+        "frontend",
+        "backend",
+        "vite",
+        "javascript",
+        "typescript"
+      ]
+    },
+    {
+      "label": "Data science & AI",
+      "repoNames": [],
+      "topics": [
+        "machine-learning",
+        "ml",
+        "ai",
+        "data-science",
+        "python",
+        "jupyter"
+      ]
+    },
+    {
+      "label": "Governance & delivery",
+      "repoNames": [],
+      "topics": [
+        "governance",
+        "delivery",
+        "documentation",
+        "rfp",
+        "process"
+      ]
+    },
+    {
+      "label": "Compliance & security",
+      "repoNames": [],
+      "topics": [
+        "security",
+        "compliance",
+        "devsecops",
+        "nis2",
+        "iso27001"
+      ]
+    }
+  ]
+}
