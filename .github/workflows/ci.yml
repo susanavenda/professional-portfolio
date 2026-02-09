@@ -7,21 +7,31 @@ on:
     branches: [main]
 
 jobs:
-  # Use golden pipeline with DevSecOps approach
+  # Golden Pipeline Interface - Standardized DevSecOps pipeline
   pipeline:
-    uses: susanavenda/devops-toolkit/.github/workflows/golden-pipeline-nodejs.yml@main
+    uses: susanavenda/devops-toolkit/.github/workflows/golden-pipeline.yml@main
     with:
-      node-version: '20'
+      language: nodejs
+      runtime-version: '20'
       install-command: 'npm ci'
       build-command: 'npm run build'
       test-command: 'npm test || echo "No tests configured"'
       lint-command: 'npm run lint'
       working-directory: '.'
+      build-artifacts-path: 'dist'
+      coverage-path: 'coverage/lcov.info'
+      enable-sast: true
+      enable-dependency-scan: true
+      enable-secrets-scan: true
+      enable-container-scan: true
+      enable-infrastructure-scan: true
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  # Infrastructure security scan
+  # Infrastructure security scan (if infrastructure exists)
   infrastructure-security:
+    if: hashFiles('infrastructure/**/*.tf') != ''
     uses: susanavenda/devops-toolkit/.github/workflows/infrastructure-security.yml@main
     with:
       terraform-version: '1.6.0'
