@@ -1,0 +1,21 @@
+# Snyk Policy File Template
+# Copy to project root and customize as needed
+
+version: v1.25.0
+
+# Ignore specific vulnerabilities (use sparingly and document why)
+# Example:
+# ignore:
+#   SNYK-JS-PACKAGE-12345:
+#     - '*':
+#         reason: Documented reason with ticket reference
+#         expires: '2026-12-31T23:59:59.999Z'
+
+# Patch vulnerabilities automatically
+patch: {}
+
+# Fail on vulnerabilities
+fail-on: all
+
+# Severity threshold (low, medium, high, critical)
+severity-threshold: high

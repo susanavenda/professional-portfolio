@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  security-events: read
 
 jobs:
   # Security checks before deployment
