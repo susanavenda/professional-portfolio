@@ -141,6 +141,18 @@ export function SkillsAndCertifications({ techskills, certifications, portfolioC
               <span className="portfolio-link__label">GitHub</span>
               <span className="portfolio-link__desc">Repositories and code</span>
             </a>
+            <a
+              href="https://sprinkle-stinger-24d.notion.site/DevOps-Architecture-Blog-82e724403aea47d481f3f88310c816e4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="portfolio-link"
+            >
+              <span className="portfolio-link__icon" aria-hidden>
+                <i className="fas fa-blog" />
+              </span>
+              <span className="portfolio-link__label">DevOps Architecture Blog</span>
+              <span className="portfolio-link__desc">Tech articles and insights</span>
+            </a>
             {reposError && (
               <p className="portfolio-repos__message" role="status">
                 Repos unavailable (try again later).
